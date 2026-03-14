@@ -1,6 +1,7 @@
 package org.springboot.mballem.controller;
 
 import org.springboot.mballem.dao.AutorDAO;
+import org.springboot.mballem.dto.AutorInfoDTO;
 import org.springboot.mballem.entity.Autor;
 import org.springboot.mballem.entity.InfoAutor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,4 +69,13 @@ public class AutorController {
         return dao.saveInfoAutor(infoAutor, id);
     }
 
+    @GetMapping("cargo")
+    public List<Autor> getAutorPorCargo(@RequestParam String cargo) {
+        return dao.findByCargo(cargo);
+    }
+
+    @GetMapping("autor-info")
+    public AutorInfoDTO getInfoAutor(@RequestParam Long id) {
+        return dao.findAutorInfoById(id);
+    }
 }

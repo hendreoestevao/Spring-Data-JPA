@@ -2,6 +2,7 @@ package org.springboot.mballem.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.springboot.mballem.dto.AutorInfoDTO;
 import org.springboot.mballem.entity.Autor;
 import org.springboot.mballem.entity.InfoAutor;
 import org.springframework.stereotype.Repository;
@@ -63,4 +64,22 @@ public class AutorDAO {
         return autor;
     }
 
+    @Transactional(readOnly = true)
+    public List<Autor> findByCargo(String cargo) {
+        String query = "select a from Autor a where a.infoAutor.cargo like :cargo order by a.nome ASC";
+        return manager.createQuery(query, Autor.class)
+                .setParameter("cargo", "%" + cargo + "%")
+                .getResultList();
+    }
+
+    @Transactional(readOnly = true)
+    public AutorInfoDTO findAutorInfoById(Long id) {
+        String query = "select new org.springboot.mballem.dto.AutorInfoDTO(a.nome, a.sobrenome, a.infoAutor.cargo, a.infoAutor.bio)" +
+                " from Autor a where a.id = :id ";
+
+
+        return manager.createQuery(query, AutorInfoDTO.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
 }
