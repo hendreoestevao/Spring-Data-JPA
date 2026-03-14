@@ -2,6 +2,7 @@ package org.springboot.mballem.controller;
 
 import org.springboot.mballem.dao.AutorDAO;
 import org.springboot.mballem.dto.AutorInfoDTO;
+import org.springboot.mballem.dto.AutorInfoProjection;
 import org.springboot.mballem.entity.Autor;
 import org.springboot.mballem.entity.InfoAutor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springboot.mballem.service.AutorService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("autores")
@@ -50,37 +52,37 @@ public class AutorController {
     }
 
     @GetMapping("{id}")
-    public Autor buscarPorId(@PathVariable Long id) {
-        return dao.findById(id);
+    public Optional<Autor> buscarPorId(@PathVariable Long id) {
+        return autorService.findById(id);
     }
 
     @GetMapping()
     public List<Autor> buscarTodosAutores() {
-        return dao.findAll();
+        return autorService.findAll();
     }
 
     @GetMapping("nomeOrSobrenome")
     public List<Autor> buscarPorNomeOuSobrenome(@RequestParam String args) {
-        return dao.findByNomeOrSobrenome(args);
+        return autorService.findByNomeOrSobrenome(args);
     }
 
     @GetMapping("total")
     public Long buscarTotalElements() {
-        return dao.getTotalElements();
+        return autorService.getTotalElements();
     }
 
     @PutMapping("{id}/info")
     public Autor salvarInfoAutor(@PathVariable Long id, @RequestBody InfoAutor infoAutor) {
-        return dao.saveInfoAutor(infoAutor, id);
+        return autorService.saveInfoAutor(infoAutor, id);
     }
 
     @GetMapping("cargo")
     public List<Autor> getAutorPorCargo(@RequestParam String cargo) {
-        return dao.findByCargo(cargo);
+        return autorService.findByCargo(cargo);
     }
 
     @GetMapping("autor-info")
-    public AutorInfoDTO getInfoAutor(@RequestParam Long id) {
-        return dao.findAutorInfoById(id);
+    public AutorInfoProjection getInfoAutor(@RequestParam Long id) {
+        return autorService.findAutorInfoById(id);
     }
 }
