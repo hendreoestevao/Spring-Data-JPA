@@ -3,6 +3,7 @@ package org.springboot.mballem.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springboot.mballem.entity.Autor;
+import org.springboot.mballem.entity.InfoAutor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,4 +49,18 @@ public class AutorDAO {
                 .setParameter("args", "%" + args + "%")
                 .getResultList();
     }
+
+    @Transactional(readOnly = true)
+    public Long getTotalElements() {
+        String query = "select count(1) from Autor a ";
+        return manager.createQuery(query, Long.class).getSingleResult();
+    }
+
+    @Transactional()
+    public Autor saveInfoAutor(InfoAutor infoAutor, Long autorId) {
+        Autor autor = this.findById(autorId);
+        autor.setInfoAutor(infoAutor);
+        return autor;
+    }
+
 }

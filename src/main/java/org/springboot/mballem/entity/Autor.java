@@ -1,10 +1,13 @@
 package org.springboot.mballem.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import java.io.Serializable;
@@ -24,6 +27,18 @@ public class Autor implements Serializable {
 
     @Column(name = "sobrenome", length = 45, nullable = false)
     private String sobrenome;
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "id_info")
+    private InfoAutor infoAutor;
+
+    public InfoAutor getInfoAutor() {
+        return infoAutor;
+    }
+
+    public void setInfoAutor(InfoAutor infoAutor) {
+        this.infoAutor = infoAutor;
+    }
 
     public Autor(String nome, String sobrenome) {
         this.nome = nome;
@@ -57,6 +72,8 @@ public class Autor implements Serializable {
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

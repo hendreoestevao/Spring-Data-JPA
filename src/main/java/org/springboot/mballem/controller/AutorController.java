@@ -2,6 +2,7 @@ package org.springboot.mballem.controller;
 
 import org.springboot.mballem.dao.AutorDAO;
 import org.springboot.mballem.entity.Autor;
+import org.springboot.mballem.entity.InfoAutor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,6 +56,16 @@ public class AutorController {
     @GetMapping("nomeOrSobrenome")
     public List<Autor> buscarPorNomeOuSobrenome(@RequestParam String args) {
         return dao.findByNomeOrSobrenome(args);
+    }
+
+    @GetMapping("total")
+    public Long buscarTotalElements() {
+        return dao.getTotalElements();
+    }
+
+    @PutMapping("{id}/info")
+    public Autor salvarInfoAutor(@PathVariable Long id, @RequestBody InfoAutor infoAutor) {
+        return dao.saveInfoAutor(infoAutor, id);
     }
 
 }
