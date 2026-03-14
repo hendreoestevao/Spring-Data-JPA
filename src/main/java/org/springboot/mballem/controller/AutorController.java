@@ -4,6 +4,7 @@ import org.springboot.mballem.dao.AutorDAO;
 import org.springboot.mballem.dto.AutorInfoDTO;
 import org.springboot.mballem.entity.Autor;
 import org.springboot.mballem.entity.InfoAutor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springboot.mballem.service.AutorService;
 
 import java.util.List;
 
@@ -22,25 +24,28 @@ public class AutorController {
 
     private AutorDAO dao;
 
-    public AutorController(AutorDAO dao) {
+    private AutorService autorService;
+
+    public AutorController(AutorDAO dao, AutorService autorService) {
         this.dao = dao;
+        this.autorService = autorService;
     }
 
     @PostMapping
     public Autor salvar(@RequestBody Autor autor) {
-        dao.save(autor);
+        autorService.save(autor);
         return autor;
     }
 
     @PutMapping
     public Autor atualizar(@RequestBody Autor autor) {
-        dao.update(autor);
+        autorService.update(autor);
         return autor;
     }
 
     @DeleteMapping("{id}")
     public String remover(@PathVariable Long id) {
-        dao.delete(id);
+        autorService.delete(id);
         return "Deletado com sucesso";
     }
 
