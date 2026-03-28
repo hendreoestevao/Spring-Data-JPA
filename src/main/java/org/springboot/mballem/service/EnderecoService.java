@@ -30,4 +30,12 @@ public class EnderecoService {
         );
         return  this.enderecoRepository.findAll(specification);
     }
+
+    @Transactional(readOnly = true)
+    public List<Endereco> findByUfAndLogradouro(String uf, String logradouro) {
+        Specification<Endereco> specification = Specification.where(
+                EnderecoSpecifications.likeUf(uf).and(EnderecoSpecifications.likeLogradouro(logradouro))
+        );
+        return  this.enderecoRepository.findAll(specification);
+    }
 }

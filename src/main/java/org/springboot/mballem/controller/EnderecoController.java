@@ -30,4 +30,9 @@ public class EnderecoController {
     public List<Endereco> getByUfAndCidade(@PathVariable String uf, @PathVariable String cidade) {
         return this.enderecoService.findByUfAndCidade(uf, cidade);
     }
+
+    @GetMapping("uf/{uf}/logradouro/{logradouro}")
+    public List<Endereco> getByUfAndLogradouro(@PathVariable String uf, @PathVariable String logradouro) {
+        return this.enderecoService.findByUfAndLogradouro(uf, logradouro);
+    }
 }

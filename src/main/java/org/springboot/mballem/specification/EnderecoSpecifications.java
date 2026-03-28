@@ -16,4 +16,10 @@ public class EnderecoSpecifications {
                 criteriaBuilder.like(root.get("cidade"), cidade)
         );
     }
+
+    public static Specification<Endereco> likeLogradouro(String logradouro) {
+        return ((root, query, criteriaBuilder) ->
+                criteriaBuilder.like(root.get("logradouro"), "%" + logradouro + "%")
+        );
+    }
 }
