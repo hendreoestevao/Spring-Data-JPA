@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EnderecoService {
@@ -37,5 +38,34 @@ public class EnderecoService {
                 EnderecoSpecifications.likeUf(uf).and(EnderecoSpecifications.likeLogradouro(logradouro))
         );
         return  this.enderecoRepository.findAll(specification);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Endereco> findByUfAndCidades(String uf, List<String> cidades) {
+        Specification<Endereco> specification = Specification.where(
+                EnderecoSpecifications.likeUf(uf).and(EnderecoSpecifications.inCidades(cidades))
+        );
+        return this.enderecoRepository.findAll(specification);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Endereco> findByAutorNomeOrSobrenome(String nome, String sobrenome) {
+        Specification<Endereco> specification = Specification.where(
+                EnderecoSpecifications.likeAutorNome(nome).or(EnderecoSpecifications.likeAutorSobrenome(sobrenome))
+        );
+        return this.enderecoRepository.findAll(specification);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Endereco> findByAutorNomeAndSobrenome(String nome, String sobrenome) {
+        return this.enderecoRepository.findOne(EnderecoSpecifications.likeAutorNomeAndAutorSobrenome(nome, sobrenome));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Endereco> findByAutorTotalDePostsAndCidades(long total, List<String> cidades) {
+        Specification<Endereco> specification = Specification.where(
+                EnderecoSpecifications.inCidades(cidades).and(EnderecoSpecifications.byGreaterThanEqualToPosts(total))
+        );
+        return this.enderecoRepository.findAll(specification);
     }
 }
