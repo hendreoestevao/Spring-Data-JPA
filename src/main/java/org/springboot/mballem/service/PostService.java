@@ -4,6 +4,10 @@ import org.springboot.mballem.entity.Autor;
 import org.springboot.mballem.entity.Categoria;
 import org.springboot.mballem.entity.Post;
 import org.springboot.mballem.repository.PostRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -81,6 +85,17 @@ public class PostService {
     @Transactional(readOnly = true)
     public List<Post> findAllBySemDataPublicacao() {
         return this.postRepository.findByDataPublicacaoIsNull();
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Post> findAllPagination(Pageable pageable) {
+        return this.postRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Post> findAllByAno(int ano, int page, int size, String sort, String direction) {
+        Pageable pageRequest = PageRequest.of(page, size, Sort.Direction.fromString(direction), sort);
+        return this.postRepository.findByAno(ano, pageRequest);
     }
 
 }
