@@ -5,13 +5,13 @@ import org.springboot.mballem.service.EnderecoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("enderecos")
@@ -57,4 +57,22 @@ public class EnderecoController {
     public List<Endereco> getByAutoresTotalDePostsPorCudades(@RequestParam long total, @RequestParam List<String> cidades) {
         return this.enderecoService.findByAutorTotalDePostsAndCidades(total, cidades);
     }
+
+    @PutMapping("{id}/novo-endereco")
+    public String updateEndereco(@PathVariable Long id, @RequestParam String bairro,
+                                 @RequestParam String logradouro, @RequestParam int numero) {
+        return this.enderecoService.updateEndereco(id, bairro, logradouro, numero) == 1
+                ? "Endereço alterado com sucesso" : "Endereço não alterado";
+    }
+
+    @GetMapping("/uf/{uf}")
+    public List<Endereco> getEnderecoByUf(@PathVariable String uf) {
+        return this.enderecoService.findByUf(uf);
+    }
+
+    @PutMapping("{id}/novo-numero")
+    public String updateNumero(@PathVariable Long id, @RequestParam int numero) {
+        return this.enderecoService.updateEnderecoNumero(id, numero);
+    }
+
 }

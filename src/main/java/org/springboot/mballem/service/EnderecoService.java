@@ -68,4 +68,19 @@ public class EnderecoService {
         );
         return this.enderecoRepository.findAll(specification);
     }
+
+    @Transactional
+    public int updateEndereco(Long id, String bairro, String logradouro, int numero) {
+        return this.enderecoRepository.updateByBairroAndLogradouroAndNumero(id, bairro, logradouro, numero);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Endereco> findByUf(String uf) {
+        return this.enderecoRepository.findEnderecosByUf(uf);
+    }
+
+    @Transactional(readOnly = false)
+    public String updateEnderecoNumero(Long id, int numero) {
+        return this.enderecoRepository.updateNumeroEndereco(id, numero);
+    }
 }
