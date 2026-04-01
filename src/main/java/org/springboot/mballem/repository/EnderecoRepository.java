@@ -22,4 +22,7 @@ public interface EnderecoRepository extends JpaRepository<Endereco, Long>, JpaSp
 
     @Procedure(procedureName = "atualizar_numero_endereco", outputParameterName = "p_resultado")
     String updateNumeroEndereco(@Param("p_id") Long id, @Param("p_novo_numero") int numero);
+
+    @Query(nativeQuery = true, value = "select obter_endereco_completo(:id)")
+    String getEnderecoCompleto(Long id);
 }

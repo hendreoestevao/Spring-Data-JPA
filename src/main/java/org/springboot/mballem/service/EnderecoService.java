@@ -83,4 +83,9 @@ public class EnderecoService {
     public String updateEnderecoNumero(Long id, int numero) {
         return this.enderecoRepository.updateNumeroEndereco(id, numero);
     }
+
+    @Transactional(readOnly = true)
+    public String getEnderecoByFuncao(Long id) {
+        return this.enderecoRepository.getEnderecoCompleto(id);
+    }
 }

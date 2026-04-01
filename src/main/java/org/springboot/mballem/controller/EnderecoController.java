@@ -75,4 +75,8 @@ public class EnderecoController {
         return this.enderecoService.updateEnderecoNumero(id, numero);
     }
 
+    @GetMapping("{id}/endereco-completo")
+    public String getEnderecoByFuncao(@PathVariable Long id) {
+        return this.enderecoService.getEnderecoByFuncao(id);
+    }
 }
