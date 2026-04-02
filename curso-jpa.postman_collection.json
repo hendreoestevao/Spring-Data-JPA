@@ -1,0 +1,975 @@
+{
+  "info": {
+    "_postman_id": "8a9e3e02-2743-47da-bc0a-d017957efd5e",
+    "name": "curso-jpa",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23354720"
+  },
+  "item": [
+    {
+      "name": "Create autor",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "admin@email.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Criacao auditoria\",\r\n    \"sobrenome\": \"Silva\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/autores",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update autor",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "editor@email.com",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 8,\r\n    \"nome\": \"Criacao auditoria\",\r\n    \"sobrenome\": \"editado\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/autores",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete autor",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores/5",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get autor by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all autor",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get nome ou sobrenome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores/nomeOrSobrenome?args=ria",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "nomeOrSobrenome"
+          ],
+          "query": [
+            {
+              "key": "args",
+              "value": "ria"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get total elements",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores/total",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "total"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add info autor",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\r\n        \"cargo\" : \"programador phpp\",\r\n        \"bio\": \"sou programador php a 5 anos\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/autores/6/info",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "6",
+            "info"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get autor by cargo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores/cargo?cargo=php",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "cargo"
+          ],
+          "query": [
+            {
+              "key": "cargo",
+              "value": "php"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get autorinfodto",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/autores/autor-info?id=4",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "autor-info"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get autor info by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/info/10",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "info",
+            "10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get info autor by cargo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/info/cargo/java",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "info",
+            "cargo",
+            "java"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get info autor by cargo and empresa",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/info/cargo/programador/empresa/oracle",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "info",
+            "cargo",
+            "programador",
+            "empresa",
+            "oracle"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get info autor by bio",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/info/bio/programador",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "info",
+            "bio",
+            "programador"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create categoria",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"titulo\": \"Java\"\r\n    },\r\n    {\r\n        \"titulo\": \"Java 2\"\r\n    },\r\n    {\r\n        \"titulo\": \"Angular\"\r\n    },\r\n    {\r\n        \"titulo\": \"Mysql\"\r\n    },\r\n    {\r\n        \"titulo\": \"MongoDB\"\r\n    },\r\n    {\r\n        \"titulo\": \"Delphi\"\r\n    },\r\n    {\r\n        \"titulo\": \"Spring framework\"\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/categorias",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get by titulo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/categorias/titulo/angular",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias",
+            "titulo",
+            "angular"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Titulo first",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/categorias/tituloInicio/ja",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias",
+            "tituloInicio",
+            "ja"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get by titulos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/categorias/titulos?t=java,angular,mysql",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias",
+            "titulos"
+          ],
+          "query": [
+            {
+              "key": "t",
+              "value": "java,angular,mysql"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get categorias asc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/categorias",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titulo\": \"Aprenda angular em 17 dias\",\r\n    \"autor\": {\r\n        \"id\": 2\r\n    },\r\n    \"categorias\": [\r\n        {\"titulo\": \"Angular\"}\r\n    ]\r\n\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/posts",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get post by categoria and id autor",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/posts/categoria/java/autor/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts",
+            "categoria",
+            "java",
+            "autor",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get post by autor nome and sobrenome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/posts/titulo/aprenda",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts",
+            "titulo",
+            "aprenda"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get post by titulo",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Get by data publicacao",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/posts/data-publicacao/2023-01-01",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts",
+            "data-publicacao",
+            "2023-01-01"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get post by no data publicacao",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/posts/sem-data-publicacao",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts",
+            "sem-data-publicacao"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all pagination",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/posts/all?page=0&size=2&sort=id,desc",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts",
+            "all"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            },
+            {
+              "key": "sort",
+              "value": "id,desc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get pagination post by age",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/posts/ano/2024?page=0&size=2&sort=id&direction",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "posts",
+            "ano",
+            "2024"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            },
+            {
+              "key": "sort",
+              "value": "id"
+            },
+            {
+              "key": "direction",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Endereco",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"uf\": \"RS\",\r\n    \"cidade\": \"Porto Alegre\",\r\n    \"bairro\": \"Centro\",\r\n    \"logradouro\": \"Av. João Pessoa\",\r\n    \"numero\": 369,\r\n    \"autor\": {\r\n        \"id\": 7\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/enderecos",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Endereco UF and Cidade",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/uf/RS/cidade/Porto Alegre",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "uf",
+            "RS",
+            "cidade",
+            "Porto Alegre"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Endereco UF amd Logradouro",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/uf/SP/logradouro/Rua",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "uf",
+            "SP",
+            "logradouro",
+            "Rua"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Endereco UF and Cidades",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/uf/RS/cidades?nomes=Porto Alegre,Caxias do Sul, Canoas",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "uf",
+            "RS",
+            "cidades"
+          ],
+          "query": [
+            {
+              "key": "nomes",
+              "value": "Porto Alegre,Caxias do Sul, Canoas"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Endereco Autor Nome OR Sobrenome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/autores/nome/Fernanda/sobrenome/Mendes",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "autores",
+            "nome",
+            "Fernanda",
+            "sobrenome",
+            "Mendes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Endereco Autor Nome AND Sobrenome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/autor/nome/Fernanda/sobrenome/Costa",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "autor",
+            "nome",
+            "Fernanda",
+            "sobrenome",
+            "Costa"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Enderecos total de Posts AND Cidades",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/autores/total-posts?total=5&cidades=Porto Alegre, Caxias do sul, Rio de janeiro, São Paulo",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "autores",
+            "total-posts"
+          ],
+          "query": [
+            {
+              "key": "total",
+              "value": "5"
+            },
+            {
+              "key": "cidades",
+              "value": "Porto Alegre, Caxias do sul, Rio de janeiro, São Paulo"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Enderecos",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "editor@email.com",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/7/novo-endereco?bairro=Zona Sul&logradouro=Rua das Oliveiras&numero=99",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "7",
+            "novo-endereco"
+          ],
+          "query": [
+            {
+              "key": "bairro",
+              "value": "Zona Sul"
+            },
+            {
+              "key": "logradouro",
+              "value": "Rua das Oliveiras"
+            },
+            {
+              "key": "numero",
+              "value": "99"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Enderecos By UF",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/uf/rs",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "uf",
+            "rs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Endereco Numero",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "editor@email.com",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/7/novo-numero?numero=88",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "7",
+            "novo-numero"
+          ],
+          "query": [
+            {
+              "key": "numero",
+              "value": "88"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get endereco completo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/1/endereco-completo",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "1",
+            "endereco-completo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get endereco by autor id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/enderecos/autor/7",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "enderecos",
+            "autor",
+            "7"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
