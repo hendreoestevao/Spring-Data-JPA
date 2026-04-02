@@ -25,4 +25,6 @@ public interface EnderecoRepository extends JpaRepository<Endereco, Long>, JpaSp
 
     @Query(nativeQuery = true, value = "select obter_endereco_completo(:id)")
     String getEnderecoCompleto(Long id);
+
+    Endereco buscarEnderecoPorAutorId(Long autorId);
 }

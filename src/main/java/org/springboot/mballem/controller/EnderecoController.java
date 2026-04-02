@@ -79,4 +79,9 @@ public class EnderecoController {
     public String getEnderecoByFuncao(@PathVariable Long id) {
         return this.enderecoService.getEnderecoByFuncao(id);
     }
+
+    @GetMapping("autor/{id}")
+    public Endereco getEnderecoByAutorId(@PathVariable Long id) {
+        return this.enderecoService.getEnderecoByAutorId(id);
+    }
 }

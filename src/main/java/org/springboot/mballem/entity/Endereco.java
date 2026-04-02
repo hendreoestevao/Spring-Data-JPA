@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ENDERECOS")
+@NamedQuery(name = "Endereco.buscarEnderecoPorAutorId", query = "select e from Endereco e where e.autor.id = ?1")
 public class Endereco implements Serializable {
 
     @Id

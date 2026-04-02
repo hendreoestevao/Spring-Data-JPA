@@ -88,4 +88,9 @@ public class EnderecoService {
     public String getEnderecoByFuncao(Long id) {
         return this.enderecoRepository.getEnderecoCompleto(id);
     }
+
+    @Transactional(readOnly = true)
+    public Endereco getEnderecoByAutorId(Long autorId) {
+        return this.enderecoRepository.buscarEnderecoPorAutorId(autorId);
+    }
 }

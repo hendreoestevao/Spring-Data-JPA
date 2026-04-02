@@ -1,6 +1,5 @@
 package org.springboot.mballem.service;
 
-import org.springboot.mballem.dto.AutorInfoDTO;
 import org.springboot.mballem.dto.AutorInfoProjection;
 import org.springboot.mballem.entity.Autor;
 import org.springboot.mballem.entity.InfoAutor;
@@ -61,4 +60,6 @@ public class AutorService {
     public AutorInfoProjection findAutorInfoById(Long id){
         return autorRepository.findAutorInfoById(id);
     }
+
+
 }
